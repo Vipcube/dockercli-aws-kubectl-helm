@@ -15,8 +15,7 @@ Mostly it is used during CI/CD (continuous integration and continuous delivery) 
 The latest docker tag is the latest release version
 
 Please avoid to use `latest` tag for any production deployment.
-Tag with right version is the proper way, such as `vipcube/dockercli-aws-kubectl-helm
-:0.1.0`.
+Tag with right version is the proper way, such as `vipcube/dockercli-with-aws-k8s-helm:0.1.0`.
 
 ## Additional Infos
 
