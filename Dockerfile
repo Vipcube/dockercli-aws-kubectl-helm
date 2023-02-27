@@ -1,7 +1,6 @@
 ARG AWS_BASE_VERSION
 
 FROM registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:${AWS_BASE_VERSION}
-# docker build -t test . --no-cache --build-arg AWS_BASE_VERSION=v0.3.9
 
 # Kubectl
 RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
