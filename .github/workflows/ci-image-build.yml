@@ -2,8 +2,9 @@ name: Auto Build for Docker image
 
 on:
   push:
-    branches:
-      - 'main'
+    # Pattern matched against refs/tags
+    tags:
+      - '**'
 
 jobs:
   docker:
@@ -33,4 +34,4 @@ jobs:
             AWS_BASE_VERSION=v0.3.9
           tags: |
             vipcube/dockercli-with-aws-k8s-helm:latest
-            vipcube/dockercli-with-aws-k8s-helm:v0.1.0
+            vipcube/dockercli-with-aws-k8s-helm:$GITHUB_REF_NAME
