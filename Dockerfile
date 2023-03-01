@@ -2,6 +2,9 @@ ARG AWS_BASE_VERSION
 
 FROM registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:${AWS_BASE_VERSION}
 
+# Git
+RUN apt-get update && apt-get -y install git
+
 # Kubectl
 RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
     && curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256" \
