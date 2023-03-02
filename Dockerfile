@@ -19,7 +19,7 @@ RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/s
 
 # Helm
 ENV HELM_BASE_URL="https://get.helm.sh"
-ENV HELM_VERSION=2.12.0
+ENV HELM_VERSION=3.9.4
 
 RUN wget ${HELM_BASE_URL}/helm-v${HELM_VERSION}-linux-amd64.tar.gz -O - | tar -xz && \
     mv linux-amd64/helm /usr/bin/helm && \
