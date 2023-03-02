@@ -30,8 +30,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          build-args: |
-            AWS_BASE_VERSION=v0.3.9
           tags: |
             vipcube/dockercli-with-aws-k8s-helm:latest
             vipcube/dockercli-with-aws-k8s-helm:${{ github.ref_name }}

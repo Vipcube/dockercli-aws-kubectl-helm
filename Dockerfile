@@ -1,17 +1,37 @@
-ARG AWS_BASE_VERSION
+FROM alpine:3.17.2
 
-FROM registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:${AWS_BASE_VERSION}
+# Base Tools
+RUN apk update \
+    && apk fix \
+    && apk add bash wget curl groff jq less unzip zip
 
 # Git
-RUN apt-get update && apt-get -y install git
+RUN apk add git git-lfs gpg less openssh patch \
+    && git lfs install
+
+# Docker
+RUN apk add docker docker-cli-compose
 
 # Kubectl
 RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
-    && curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256" \
-    && echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check \
-    && install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+    && chmod +x ./kubectl \
+    && mv ./kubectl /usr/local/bin/kubectl
 
 # Helm
-RUN curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+ENV HELM_BASE_URL="https://get.helm.sh"
+ENV HELM_VERSION=2.12.0
+
+RUN wget ${HELM_BASE_URL}/helm-v${HELM_VERSION}-linux-amd64.tar.gz -O - | tar -xz && \
+    mv linux-amd64/helm /usr/bin/helm && \
+    chmod +x /usr/bin/helm && \
+    rm -rf linux-amd64
+
+RUN chmod +x /usr/bin/helm
+
+# AWS
+RUN apk add aws-cli
+
+# Remove cache
+RUN rm -rf /var/cache/apk/*
 
 LABEL maintainer="Bread God (https://github.com/Vipcube)"
