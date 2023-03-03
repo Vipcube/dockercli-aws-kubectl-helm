@@ -1,4 +1,4 @@
-# Docker Image CLI with AWS EKS
+# Docker Image CLI with AWS, K8S
 
 The hardest container image to find on public repositories is the one I want, but it always seems to be missing a part.
 Therefore, I decided to build it myself. :sunglasses:
@@ -30,6 +30,9 @@ Tag with right version is the proper way, such as `vipcube/dockercli-with-aws-k8
 ## Usage
 
 ```shell
+# run container as git command
+docker run -it vipcube/dockercli-with-aws-k8s-helm git
+
 # run container as docker command
 docker run -it vipcube/dockercli-with-aws-k8s-helm docker
 
