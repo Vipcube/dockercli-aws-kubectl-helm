@@ -3,8 +3,7 @@
 The hardest container image to find on public repositories is the one I want, but it always seems to be missing a part.
 Therefore, I decided to build it myself. :sunglasses:
 
-This image base on [Gitlab Docker + AWS CLI](https://gitlab.com/gitlab-org/cloud-deploy), and 
-packs the [git](https://git-scm.com/), [Kubectl](https://kubernetes.io/docs/tasks/tools/) together with the [Helm](https://helm.sh/docs/intro/install/).
+This image base on `alpine`, and packs the [git](https://git-scm.com/), [Kubectl](https://kubernetes.io/docs/tasks/tools/) together with the [Helm](https://helm.sh/docs/intro/install/).
 
 ## Why we need it
 
